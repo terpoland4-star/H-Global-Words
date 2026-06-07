@@ -1,15 +1,10 @@
-import { cn } from '@/lib/utils';
+import { ReactNode } from 'react';
 
 interface ContainerProps {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
-  as?: keyof JSX.IntrinsicElements;
 }
 
-export function Container({ children, className, as: Component = 'div' }: ContainerProps) {
-  return (
-    <Component className={cn('container-custom', className)}>
-      {children}
-    </Component>
-  );
+export function Container({ children, className = '' }: ContainerProps) {
+  return <div className={`container-custom ${className}`}>{children}</div>;
 }

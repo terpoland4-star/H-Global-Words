@@ -1,0 +1,62 @@
+import { Container } from '@/components/ui/Container';
+import { SectionTitle } from '@/components/ui/SectionTitle';
+import { ContactForm } from '@/components/contact/ContactForm';
+import { Mail, Phone, MapPin, Clock, Globe } from 'lucide-react';
+
+const contactInfo = [
+  { icon: Mail, title: 'Email', details: 'contact@hamglobalwords.com', link: 'mailto:contact@hamglobalwords.com' },
+  { icon: Phone, title: 'Téléphone', details: '+227 89 03 01 06', link: 'tel:+22789030106' },
+  { icon: MapPin, title: 'Adresse', details: 'Niamey, Niger (Sahel)', link: null },
+  { icon: Clock, title: 'Horaires', details: 'Lun - Ven: 9h - 18h (GMT+1)', link: null },
+  { icon: Globe, title: 'Langues', details: 'Français, Anglais, Arabe, Songhaï, Tamasheq, Tadaksahak', link: null },
+];
+
+export default function ContactPage() {
+  return (
+    <section className="py-24">
+      <Container>
+        <SectionTitle
+          title="Contactez-nous"
+          subtitle="Parlons de votre projet linguistique ou digital"
+          badge="Prenez contact"
+        />
+
+        <div className="grid lg:grid-cols-3 gap-8 mt-12">
+          {/* Informations */}
+          <div className="lg:col-span-1">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 sticky top-24">
+              <h2 className="text-2xl font-bold mb-6">Informations</h2>
+              <div className="space-y-5">
+                {contactInfo.map((item) => (
+                  <div key={item.title} className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center flex-shrink-0">
+                      <item.icon className="w-5 h-5 text-primary-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">{item.title}</h3>
+                      {item.link ? (
+                        <a href={item.link} className="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-500 transition">
+                          {item.details}
+                        </a>
+                      ) : (
+                        <p className="text-sm text-gray-600 dark:text-gray-300">{item.details}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Formulaire */}
+          <div className="lg:col-span-2">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 md:p-8">
+              <h2 className="text-2xl font-bold mb-6">Envoyez-nous un message</h2>
+              <ContactForm />
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}

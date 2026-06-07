@@ -7,9 +7,12 @@ interface ButtonProps {
   size?: 'sm' | 'md' | 'lg';
   fullWidth?: boolean;
   onClick?: () => void;
+  className?: string;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
 }
 
-export function Button({ children, href, variant = 'primary', size = 'md', fullWidth = false, onClick }: ButtonProps) {
+export function Button({ children, href, variant = 'primary', size = 'md', fullWidth = false, onClick, className, type = 'button', disabled }: ButtonProps) {
   const base = 'inline-flex items-center justify-center rounded-lg font-semibold transition-all';
   const variants = {
     primary: 'bg-primary-600 text-white hover:bg-primary-700',
@@ -17,13 +20,13 @@ export function Button({ children, href, variant = 'primary', size = 'md', fullW
     white: 'bg-white text-primary-600 hover:bg-gray-50',
   };
   const sizes = { sm: 'px-4 py-2 text-sm', md: 'px-6 py-3 text-base', lg: 'px-8 py-4 text-lg' };
-  const classes = `${base} ${variants[variant]} ${sizes[size]} ${fullWidth ? 'w-full' : ''}`;
+  const classes = `${base} ${variants[variant]} ${sizes[size]} ${fullWidth ? 'w-full' : ''} ${className ?? ''}`;
 
   if (href) {
     return <Link href={href} className={classes}>{children}</Link>;
   }
   return (
-    <button onClick={onClick} className={classes}>
+    <button type={type} onClick={onClick} className={classes} disabled={disabled}>
       {children}
     </button>
   );

@@ -1,0 +1,24 @@
+import { Container } from '@/components/ui/Container';
+import { SectionTitle } from '@/components/ui/SectionTitle';
+
+export default function LegalPage() {
+  return (
+    <section className="py-24">
+      <Container>
+        <SectionTitle title="Mentions légales" centered />
+        <div className="prose prose-lg dark:prose-invert max-w-4xl mx-auto mt-12">
+          <h2>1. Informations légales</h2>
+          <p><strong>HAM GLOBAL WORDS</strong><br />Niamey, Niger (Sahel)<br />Email : contact@hamglobalwords.com<br />Tél : +227 89 03 01 06</p>
+          <h2>2. Directeur de publication</h2>
+          <p>Hamadine AG Moctar</p>
+          <h2>3. Hébergement</h2>
+          <p>Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA</p>
+          <h2>4. Propriété intellectuelle</h2>
+          <p>Tous les contenus sont la propriété exclusive de HAM GLOBAL WORDS.</p>
+          <h2>5. Données personnelles</h2>
+          <p>Conformément à la législation, vous disposez d'un droit d'accès, de rectification et d'opposition.</p>
+        </div>
+      </Container>
+    </section>
+  );
+}
